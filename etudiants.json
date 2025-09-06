@@ -1,0 +1,20 @@
+[
+    {
+        "nom": "PAOLO",
+        "prenom": "PAOLO",
+        "age": 23,
+        "formation": "INFO"
+    },
+    {
+        "nom": "ELOGE",
+        "prenom": "ELOGE",
+        "age": 45,
+        "formation": "INFO"
+    },
+    {
+        "nom": "NIREMA",
+        "prenom": "NIREMA",
+        "age": 54,
+        "formation": "INFO"
+    }
+]

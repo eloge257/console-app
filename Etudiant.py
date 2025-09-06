@@ -9,17 +9,20 @@ class Etudiant(Personne):
          print(self.nom,self.prenom,self.age,self.formation)
     
         def create_etudiant(self):        
-         nombre = int(input("Combien d'etudiants voulez-vous creer?"))
-         dict=[]
-         for i in range (nombre):
-            print("Etudiant numero:",i+1)
-            self.nom = input("Nom de l'etudiant:")
-            self.prenom = input("Prenom de l'etudiant:")
-            self.age = int(input("Age de l'etudiant:"))
-            self.formation = input("Formation de l'etudiant:")
-            dict.append(self.__dict__)
-        
-         print(dict)
+            nombre = int(input("Combien d'etudiants voulez-vous creer?"))
+            etudiants = []
+            for i in range(nombre):
+                print("Etudiant numero:", i+1)
+                nom = input("Nom de l'etudiant:")
+                prenom = input("Prenom de l'etudiant:")
+                age = int(input("Age de l'etudiant:"))
+                formation = input("Formation de l'etudiant:")
+                etudiant = Etudiant(nom, prenom, age, formation)
+                etudiants.append(etudiant.to_dict())
+            # Sauvegarde tous les étudiants dans le fichier JSON
+            Etudiant.sauvegarder_etudiant_json(etudiants, "etudiants.json")
+            print("Etudiants sauvegardés dans etudiants.json")
+         
         def to_dict(self):
             return {
                 "nom": self.nom,
@@ -29,9 +32,10 @@ class Etudiant(Personne):
             }
 
 
-def sauvegarder_etudiant_json(etudiant, filename):
-    with open(filename, "w", encoding="utf-8") as f:
-     json.dump(etudiant.to_dict(), f, ensure_ascii=False, indent=4)
+        @staticmethod
+        def sauvegarder_etudiant_json(etudiants, filename):
+            with open(filename, "w", encoding="utf-8") as f:
+                json.dump(etudiants, f, ensure_ascii=False, indent=4)
 
-etudiant = Etudiant("Dupont", "Jean", 22, "Informatique")
-sauvegarder_etudiant_json(etudiant, "etudiant.json")
+# etudiant = Etudiant("Dupont", "Jean", 22, "Informatique")
+# sauvegarder_etudiant_json(etudiant, "etudiant.json")
